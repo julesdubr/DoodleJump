@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
 {
     private Rigidbody2D rb;
 
+    public Animator animator;
     public float speed = 10f;
     public float jumpForce = 10f;
     private bool facingRight = true;
@@ -40,6 +41,7 @@ public class PlayerController : MonoBehaviour
         Vector2 velocity = rb.velocity;
         velocity.y = jumpForce;
         rb.velocity = velocity;
+        animator.SetBool("IsJumping", true);
     }
 
     void Update()
