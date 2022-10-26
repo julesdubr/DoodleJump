@@ -20,4 +20,9 @@ public class Projectile : MonoBehaviour
     void OnBecameInvisible() {
         Destroy(gameObject);
     }
+
+    void OnTriggerEnter2D(Collider2D other) {
+        Destroy(other.gameObject);
+        Destroy(gameObject);
+    }
 }

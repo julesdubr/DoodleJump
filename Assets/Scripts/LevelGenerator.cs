@@ -7,7 +7,7 @@ public class LevelGenerator : MonoBehaviour
     public List<GameObject> prefabList = new List<GameObject>();
 
     public int numberOfPlatforms = 200;
-    public float levelWidth = 3f;
+    public float levelWidth = 2.5f;
     public float minY = .5f;
     public float maxY = 1.5f;
 
