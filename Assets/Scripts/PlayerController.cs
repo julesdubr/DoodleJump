@@ -44,6 +44,12 @@ public class PlayerController : MonoBehaviour
         animator.SetBool("IsJumping", true);
     }
 
+    public void AnimationEvent(string message)
+    {
+        if (message.Equals("JumpAnimationEnded"))
+            animator.SetBool("IsJumping", false);
+    }
+
     void Update()
     {
         Vector3 pos = Camera.main.WorldToViewportPoint(transform.position);

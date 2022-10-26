@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class LevelGenerator : MonoBehaviour
 {
-    public GameObject platformPrefab;
+    public List<GameObject> prefabList = new List<GameObject>();
 
     public int numberOfPlatforms = 200;
     public float levelWidth = 3f;
-    public float minY = .2f;
+    public float minY = .5f;
     public float maxY = 1.5f;
+
+    private float[] probabilities = {0.4f, 0.5f, 0.85f, 1f};
 
     // Start is called before the first frame update
     void Start()
@@ -18,15 +20,15 @@ public class LevelGenerator : MonoBehaviour
 
         for (int i = 0; i < numberOfPlatforms; i++)
         {
+            float rand = UnityEngine.Random.Range(0f, 1f);
+            int prefabIndex = 0;
+
+            while (rand > probabilities[prefabIndex]) prefabIndex++;
+
             spawnPosition.y += Random.Range(minY, maxY);
             spawnPosition.x = Random.Range(-levelWidth, levelWidth);
-            Instantiate(platformPrefab, spawnPosition, Quaternion.identity);
+            Instantiate(prefabList[prefabIndex], spawnPosition, Quaternion.identity);
         }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

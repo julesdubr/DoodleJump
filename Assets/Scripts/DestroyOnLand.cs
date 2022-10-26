@@ -6,7 +6,7 @@ public class DestroyOnLand : MonoBehaviour
 {
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.relativeVelocity.y >= 0f)
+        if (collision.relativeVelocity.y > 0f)
             return;
 
         Rigidbody2D rb = collision.collider.GetComponent<Rigidbody2D>();

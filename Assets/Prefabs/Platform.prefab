@@ -13,8 +13,9 @@ GameObject:
   - component: {fileID: 7128966847243075485}
   - component: {fileID: 7128966847243075486}
   - component: {fileID: 5489487453852585165}
+  - component: {fileID: -4331678491506198161}
   m_Layer: 0
-  m_Name: PlatformBlue
+  m_Name: Platform
   m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -74,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -1
-  m_Sprite: {fileID: 21300000, guid: 81ae47c5f9990ee4db1114bad2957274, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 27d623fe8f838b548aac968507cfc203, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -138,3 +139,15 @@ PlatformEffector2D:
   m_UseSideFriction: 0
   m_UseSideBounce: 0
   m_SideArc: 1
+--- !u!114 &-4331678491506198161
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7128966847243075458}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2da3787a879de9940b7678f8d75d2225, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

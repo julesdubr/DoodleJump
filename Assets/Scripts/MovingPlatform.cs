@@ -6,7 +6,7 @@ public class MovingPlatform : MonoBehaviour
 {
     private Rigidbody2D rb;
 
-    public float speed = 2f;
+    private float speed;
     private int direction;
 
     // Start is called before the first frame update
@@ -14,6 +14,7 @@ public class MovingPlatform : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         direction = Random.Range(0, 1) * 2 - 1;
+        speed = Random.Range(1.5f, 3f);
     }
 
     // Update is called once per frame
