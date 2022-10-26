@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
+using TMPro;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerController : MonoBehaviour
@@ -9,18 +11,20 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rb;
 
     public Animator animator;
-    public float speed = 10f;
-    public float jumpForce = 10f;
+    public float speed = 5f;
+    public float jumpForce = 11f;
     private bool facingRight = true;
 
     private Vector2 input;
     private Vector2 constantVelocity;
     private Vector2 smoothInputVelocity;
 
-    [SerializeField] private float smoothInputSpeed = .2f;
+    public TextMeshProUGUI scoreText;
+    private float distance = 0;
 
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private float smoothInputSpeed = .1f;
+
+    void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
     }
@@ -33,10 +37,7 @@ public class PlayerController : MonoBehaviour
     void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Ennemy"))
-        {
-            UnityEditor.EditorApplication.isPlaying = false;
-            return;
-        }
+            GameOver();
 
         if (!collision.gameObject.CompareTag("Platform"))
             return;
@@ -64,7 +65,7 @@ public class PlayerController : MonoBehaviour
         Vector3 pos = Camera.main.WorldToViewportPoint(transform.position);
 
         if (pos.y < -0.1f)
-            UnityEditor.EditorApplication.isPlaying = false;
+            GameOver();
 
         // Teleport player to the other side of the screen
         if (pos.x < 0f)
@@ -79,6 +80,13 @@ public class PlayerController : MonoBehaviour
             Flip();
         else if (input.x < 0 && facingRight)
             Flip();
+
+        // Update score
+        if (transform.position.y > distance)
+        {
+            distance = transform.position.y;
+            scoreText.text = (distance * 50).ToString("F0");
+        }
     }
 
     void Flip()
@@ -88,5 +96,10 @@ public class PlayerController : MonoBehaviour
         gameObject.transform.localScale = currentScale;
 
         facingRight = !facingRight;
+    }
+
+    void GameOver()
+    {
+        SceneManager.LoadScene(0);
     }
 }
