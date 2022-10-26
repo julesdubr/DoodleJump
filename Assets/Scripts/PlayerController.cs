@@ -63,13 +63,6 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        // Movement Right or Left
-        constantVelocity = Vector2.Lerp(constantVelocity, input * speed, smoothInputSpeed);
-
-        Vector2 velocity = rb.velocity;
-        velocity.x = constantVelocity.x;
-        rb.velocity = velocity;
-
         // Game over when player falls off the screen
         Vector3 pos = Camera.main.WorldToViewportPoint(transform.position);
 
@@ -96,6 +89,15 @@ public class PlayerController : MonoBehaviour
             distance = transform.position.y;
             scoreText.text = (distance * 50).ToString("F0");
         }
+    }
+
+    void FixedUpdate() {
+        // Movement Right or Left
+        constantVelocity = Vector2.Lerp(constantVelocity, input * speed, smoothInputSpeed);
+
+        Vector2 velocity = rb.velocity;
+        velocity.x = constantVelocity.x;
+        rb.velocity = velocity;
     }
 
     void Flip()

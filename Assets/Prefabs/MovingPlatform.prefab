@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7128966847243075458, guid: 94cde8ebe7695894087f1e8083917f00, type: 3}
       propertyPath: m_Name
-      value: Platform Variant
+      value: MovingPlatform
       objectReference: {fileID: 0}
     - target: {fileID: 7128966847243075484, guid: 94cde8ebe7695894087f1e8083917f00, type: 3}
       propertyPath: m_Sprite
@@ -83,7 +83,7 @@ Rigidbody2D:
   m_AngularDrag: 0.05
   m_GravityScale: 1
   m_Material: {fileID: 0}
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0

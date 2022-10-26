@@ -8,7 +8,8 @@ public class Projectile : MonoBehaviour
     public float speed = 20f;
     private Rigidbody2D _rb;
 
-    void Awake() {
+    void Awake()
+    {
         _rb = GetComponent<Rigidbody2D>();
     }
 
@@ -17,12 +18,17 @@ public class Projectile : MonoBehaviour
         _rb.velocity = transform.up * speed;
     }
 
-    void OnBecameInvisible() {
+    void OnBecameInvisible()
+    {
         Destroy(gameObject);
     }
 
-    void OnTriggerEnter2D(Collider2D other) {
-        Destroy(other.gameObject);
-        Destroy(gameObject);
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Ennemy"))
+        {
+            Destroy(collision.gameObject);
+            Destroy(gameObject);
+        }
     }
 }
