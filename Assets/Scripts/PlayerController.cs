@@ -7,7 +7,6 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
     private Rigidbody2D rb;
-    private BoxCollider2D boxCollider2D;
 
     public float speed = 10f;
     public float jumpForce = 10f;
@@ -17,14 +16,12 @@ public class PlayerController : MonoBehaviour
     private Vector2 constantVelocity;
     private Vector2 smoothInputVelocity;
 
-    [SerializeField]
-    private float smoothInputSpeed = .2f;
+    [SerializeField] private float smoothInputSpeed = .2f;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        boxCollider2D = GetComponent<BoxCollider2D>();
     }
 
     void OnMove(InputValue movementValue)
