@@ -4,15 +4,16 @@ using UnityEngine;
 
 public class DestroyOnLand : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    void OnCollisionEnter2D(Collision2D collision)
     {
-        
-    }
+        if (collision.relativeVelocity.y >= 0f)
+            return;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        Rigidbody2D rb = collision.collider.GetComponent<Rigidbody2D>();
+
+        if (rb == null)
+            return;
+
+        Destroy(this.gameObject);
     }
 }
