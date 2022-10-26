@@ -32,6 +32,12 @@ public class PlayerController : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
+        if (collision.gameObject.CompareTag("Ennemy"))
+        {
+            UnityEditor.EditorApplication.isPlaying = false;
+            return;
+        }
+
         if (!collision.gameObject.CompareTag("Platform"))
             return;
 
@@ -56,7 +62,7 @@ public class PlayerController : MonoBehaviour
 
         // Game over when player falls off the screen
         Vector3 pos = Camera.main.WorldToViewportPoint(transform.position);
-        
+
         if (pos.y < -0.1f)
             UnityEditor.EditorApplication.isPlaying = false;
 
