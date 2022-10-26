@@ -11,7 +11,7 @@ public class LevelGenerator : MonoBehaviour
     public float minY = .5f;
     public float maxY = 1.5f;
 
-    private float[] probabilities = {0.4f, 0.5f, 0.85f, 1f};
+    private float[] probabilities = {0.75f, 0.8f, 0.95f, 1f};
 
     // Start is called before the first frame update
     void Start()

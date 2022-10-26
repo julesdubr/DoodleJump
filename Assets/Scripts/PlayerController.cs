@@ -41,20 +41,22 @@ public class PlayerController : MonoBehaviour
         Vector2 velocity = rb.velocity;
         velocity.y = jumpForce;
         rb.velocity = velocity;
-        animator.SetBool("IsJumping", true);
-    }
 
-    public void AnimationEvent(string message)
-    {
-        if (message.Equals("JumpAnimationEnded"))
-            animator.SetBool("IsJumping", false);
+        animator.SetTrigger("Jump");
     }
 
     void Update()
     {
-        Vector3 pos = Camera.main.WorldToViewportPoint(transform.position);
+        // Movement Right or Left
+        constantVelocity = Vector2.Lerp(constantVelocity, input * speed, smoothInputSpeed);
+
+        Vector2 velocity = rb.velocity;
+        velocity.x = constantVelocity.x;
+        rb.velocity = velocity;
 
         // Game over when player falls off the screen
+        Vector3 pos = Camera.main.WorldToViewportPoint(transform.position);
+        
         if (pos.y < -0.1f)
             UnityEditor.EditorApplication.isPlaying = false;
 
@@ -71,15 +73,6 @@ public class PlayerController : MonoBehaviour
             Flip();
         else if (input.x < 0 && facingRight)
             Flip();
-    }
-
-    void FixedUpdate()
-    {
-        constantVelocity = Vector2.Lerp(constantVelocity, input * speed, smoothInputSpeed);
-
-        Vector2 velocity = rb.velocity;
-        velocity.x = constantVelocity.x;
-        rb.velocity = velocity;
     }
 
     void Flip()

@@ -12,7 +12,7 @@ public class CameraController : MonoBehaviour
     // Update is called once per frame
     void LateUpdate()
     {
-        if (target.position.y < transform.position.y)
+        if (target.position.y <= transform.position.y)
             return;
 
         transform.position = new Vector3(
