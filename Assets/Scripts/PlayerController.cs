@@ -19,6 +19,9 @@ public class PlayerController : MonoBehaviour
     private Vector2 constantVelocity;
     private Vector2 smoothInputVelocity;
 
+    public Transform firePoint;
+    public GameObject projectilePrefab;
+
     public TextMeshProUGUI scoreText;
     private float distance = 0;
 
@@ -32,6 +35,12 @@ public class PlayerController : MonoBehaviour
     void OnMove(InputValue movementValue)
     {
         input = movementValue.Get<Vector2>();
+    }
+
+    void OnFire()
+    {
+        animator.SetTrigger("Fire");
+        Instantiate(projectilePrefab, firePoint.position, firePoint.rotation);
     }
 
     void OnCollisionEnter2D(Collision2D collision)
@@ -91,11 +100,13 @@ public class PlayerController : MonoBehaviour
 
     void Flip()
     {
-        Vector3 currentScale = gameObject.transform.localScale;
-        currentScale.x *= -1;
-        gameObject.transform.localScale = currentScale;
+        // Vector3 currentScale = gameObject.transform.localScale;
+        // currentScale.x *= -1;
+        // gameObject.transform.localScale = currentScale;
 
         facingRight = !facingRight;
+
+        transform.Rotate(0f, 180f, 0f);
     }
 
     void GameOver()
