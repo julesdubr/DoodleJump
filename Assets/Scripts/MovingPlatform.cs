@@ -4,14 +4,9 @@ using UnityEngine;
 
 public class MovingPlatform : MonoBehaviour
 {
-    private Rigidbody2D _rigidbody;
     private float _speed;
     private int _direction;
 
-    void Awake()
-    {
-        _rigidbody = GetComponent<Rigidbody2D>();
-    }
 
     void Start()
     {
@@ -19,7 +14,7 @@ public class MovingPlatform : MonoBehaviour
         _speed = Random.Range(1.5f, 3f);
     }
 
-    void FixedUpdate()
+    void Update()
     {
         Vector3 pos = Camera.main.WorldToViewportPoint(transform.position);
 
@@ -28,9 +23,6 @@ public class MovingPlatform : MonoBehaviour
         else if (pos.x >= 0.9f)
             _direction = -1;
 
-
-        Vector2 velocity = _rigidbody.velocity;
-        velocity.x = _direction * _speed;
-        _rigidbody.velocity = velocity;
+        transform.Translate(_direction * _speed * Time.deltaTime, 0f, 0f);
     }
 }

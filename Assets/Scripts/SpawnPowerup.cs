@@ -4,23 +4,27 @@ using UnityEngine;
 
 public class SpawnPowerup : MonoBehaviour
 {
-    public List<GameObject> powerUps;
-    private float[] probabilities = {1f};
-    private float spawn_prct = 0.05f;
-    private Transform anchor;
+    [SerializeField] private float spawnProb = 0.05f;
+    [SerializeField] private List<GameObject> powerUps;
+    [SerializeField] private float[] probabilities = { 1f };
 
-    private Vector3 pos;
-    // Start is called before the first frame update
+
     void Start()
     {
-        anchor = this.transform;
-        if (Random.Range(0f, 1f) > spawn_prct) return;
+        if (Random.Range(0f, 1f) > spawnProb)
+            return;
+
+        Vector3 offset = new Vector3(Random.Range(-.2f, .2f), .1f, 0f);
+
         float rand = Random.Range(0f, 1f);
-        int indexPup = 0;
-        while (rand > probabilities[indexPup]) indexPup++;
-        pos = new Vector3(Random.Range(-0.2f, 0.2f), 0.2f, 0f);
-        GameObject res = Instantiate(powerUps[indexPup], pos + anchor.position, Quaternion.identity);
-        res.GetComponent<Powerup>().pos = pos;
-        res.GetComponent<Powerup>().anchor = anchor;
+        int indexPup = -1;
+
+        while (rand > probabilities[++indexPup]);
+
+        GameObject powerup = Instantiate(
+            powerUps[indexPup], transform.position + offset, Quaternion.identity
+        );
+
+        powerup.transform.parent = gameObject.transform;
     }
 }

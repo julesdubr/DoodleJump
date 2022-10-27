@@ -26,7 +26,6 @@ public class PlayerController : MonoBehaviour
     public TextMeshProUGUI scoreText;
     private float _distance = 0;
 
-    [SerializeField] private AudioClip _jumpSound;
     [SerializeField] private AudioClip[] _fireSounds;
     [SerializeField] private AudioSource _gameOverSoundEffect;
 
@@ -66,10 +65,9 @@ public class PlayerController : MonoBehaviour
             {
                 // Make the player bounce
                 Vector2 velocity = _rigidbody.velocity;
-                velocity.y = other.gameObject.CompareTag("Spring") ? jumpForce*3 : jumpForce;
+                velocity.y = jumpForce * controller.bounceCoef;
                 _rigidbody.velocity = velocity;
 
-                AudioSystem.Instance.PlaySound(_jumpSound);
                 _animator.SetTrigger("Jump");
             }
 

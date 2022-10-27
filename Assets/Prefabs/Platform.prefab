@@ -75,7 +75,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -1
+  m_SortingOrder: -2
   m_Sprite: {fileID: 21300000, guid: 27d623fe8f838b548aac968507cfc203, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -141,9 +141,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bounce: 1
+  bounceCoef: 1
   killPlayer: 0
   onLanding: 0
-  _trapBreakSoundEffect: {fileID: 0}
+  _hitSound: {fileID: 8300000, guid: 2119d6c86fb34c543869c50b45ed11c5, type: 3}
 --- !u!114 &896460408973139062
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -170,3 +171,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   powerUps:
   - {fileID: 5460107401614279722, guid: f8b4d06705521ea4a8427c547a6063af, type: 3}
+  probabilities:
+  - 1
+  spawnProb: 0.05

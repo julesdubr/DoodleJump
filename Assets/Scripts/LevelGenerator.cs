@@ -4,16 +4,15 @@ using UnityEngine;
 
 public class LevelGenerator : MonoBehaviour
 {
-    public List<GameObject> prefabList = new List<GameObject>();
+    [SerializeField] private List<GameObject> prefabList = new List<GameObject>();
+    [SerializeField] private float[] probabilities = { 0.75f, 0.8f, 0.95f, 1f };
 
-    public int numberOfPlatforms = 200;
-    public float levelWidth = 2.5f;
-    public float minY = .5f;
-    public float maxY = 1.5f;
+    [SerializeField] private int numberOfPlatforms = 200;
+    [SerializeField] private float levelWidth = 2.5f;
+    [SerializeField] private float minY = .5f;
+    [SerializeField] private float maxY = 1.5f;
 
-    private float[] probabilities = {0.75f, 0.8f, 0.95f, 1f};
 
-    // Start is called before the first frame update
     void Start()
     {
         Vector3 spawnPosition = new Vector3(0f, -3f, 0f);

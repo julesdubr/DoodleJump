@@ -10,11 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1736758998645354846}
   - component: {fileID: -1521273515854431205}
-  - component: {fileID: 4064183594592755470}
-  - component: {fileID: -3902255808131379728}
-  - component: {fileID: -1629262756505654975}
+  - component: {fileID: -5061026265784515946}
   - component: {fileID: 6635995399720323957}
   - component: {fileID: 9003415591203181488}
+  - component: {fileID: 5546981740332100765}
   m_Layer: 1
   m_Name: Spring
   m_TagString: Spring
@@ -75,7 +74,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: 21300000, guid: 94e8ea1464ed05349a557ab8e49718a4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -87,8 +86,8 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!68 &4064183594592755470
-EdgeCollider2D:
+--- !u!61 &-5061026265784515946
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -100,43 +99,19 @@ EdgeCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 1
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 0.17146075}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0}
+    oldSize: {x: 0.34, y: 0.23}
+    newSize: {x: 0.34, y: 0.23}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.34, y: 0.11707847}
   m_EdgeRadius: 0
-  m_Points:
-  - {x: -0.16804306, y: 0.11611144}
-  - {x: 0.17195693, y: 0.116111435}
-  m_AdjacentStartPoint: {x: 0, y: 0}
-  m_AdjacentEndPoint: {x: 0, y: 0}
-  m_UseAdjacentStartPoint: 0
-  m_UseAdjacentEndPoint: 0
---- !u!114 &-3902255808131379728
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5460107401614279722}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2022faa8ff41e0b4996bf2450a580c01, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: -1521273515854431205}
-  extended: {fileID: 21300000, guid: befdec0e47c86524badb4a0c2e050412, type: 3}
---- !u!114 &-1629262756505654975
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5460107401614279722}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec0682c8753d73347b71de3d67307ade, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  anchor: {fileID: 0}
-  pos: {x: 0, y: 0, z: 0}
 --- !u!251 &6635995399720323957
 PlatformEffector2D:
   m_ObjectHideFlags: 0
@@ -152,7 +127,7 @@ PlatformEffector2D:
   m_RotationalOffset: 0
   m_UseOneWay: 1
   m_UseOneWayGrouping: 0
-  m_SurfaceArc: 20
+  m_SurfaceArc: 178
   m_UseSideFriction: 0
   m_UseSideBounce: 0
   m_SideArc: 1
@@ -169,6 +144,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bounce: 1
+  bounceCoef: 1.5
   killPlayer: 0
-  onLanding: 0
-  _trapBreakSoundEffect: {fileID: 0}
+  onLanding: 3
+  _hitSound: {fileID: 8300000, guid: e1104e4f2b6aa884aacea9552cfcd035, type: 3}
+--- !u!95 &5546981740332100765
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5460107401614279722}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e41850f9de7b10b47ad419623a3ffa53, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
