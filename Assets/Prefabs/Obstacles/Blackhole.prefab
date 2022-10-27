@@ -98,8 +98,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bounce: 0
+  bounceCoef: 1
   killPlayer: 1
   onLanding: 0
+  _hitSound: {fileID: 8300000, guid: 8a4c4e581f93d5840bf35d7d06ec15a1, type: 3}
 --- !u!58 &7545698915793604118
 CircleCollider2D:
   m_ObjectHideFlags: 0

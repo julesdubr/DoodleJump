@@ -7,15 +7,25 @@ public class CameraFollow : MonoBehaviour
     public float smoothTime = .25f;
     private Vector3 _velocity = Vector3.zero;
 
-    [SerializeField] public Transform target;
+    [SerializeField] private PlayerController player;
 
-    // Update is called once per frame
+    private Transform target;
+    private Vector3 targetPosition;
+
+    void Awake()
+    {
+        target = player.transform;
+    }
+
     void LateUpdate()
     {
-        if (target.position.y <= transform.position.y)
-            return;
+        if (target.position.y > transform.position.y)
+            targetPosition = new Vector3(transform.position.x, target.position.y, transform.position.z);
 
-        Vector3 targetPosition = new Vector3(transform.position.x, target.position.y, transform.position.z);
+        else if (player.isDead)
+            targetPosition = new Vector3(transform.position.x, target.position.y - 2, transform.position.z);
+
+        else return;
 
         transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref _velocity, smoothTime);
     }

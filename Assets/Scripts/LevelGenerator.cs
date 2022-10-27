@@ -4,14 +4,19 @@ using UnityEngine;
 
 public class LevelGenerator : MonoBehaviour
 {
-    [SerializeField] private List<GameObject> prefabList = new List<GameObject>();
-    [SerializeField] private float[] probabilities = { 0.75f, 0.8f, 0.95f, 1f };
+    [SerializeField] private List<GameObject> platformsList = new List<GameObject>();
+    [SerializeField] private float[] platformsProbs = { 0.75f, 0.8f, 0.95f, 1f };
+
+    [SerializeField] private float obstacleSpawnProb = 0.01f;
+    [SerializeField] private List<GameObject> obstaclesList = new List<GameObject>();
+    [SerializeField] private float[] obstaclesProbs = { 0.3f, 0.6f, 0.9f, 1f };
 
     [SerializeField] private int numberOfPlatforms = 200;
     [SerializeField] private float levelWidth = 2.5f;
     [SerializeField] private float minY = .5f;
     [SerializeField] private float maxY = 1.5f;
 
+    private float rand;
 
     void Start()
     {
@@ -19,14 +24,36 @@ public class LevelGenerator : MonoBehaviour
 
         for (int i = 0; i < numberOfPlatforms; i++)
         {
-            float rand = UnityEngine.Random.Range(0f, 1f);
-            int prefabIndex = -1;
-
-            while (rand > probabilities[++prefabIndex]) ;
-
             spawnPosition.y += Random.Range(minY, maxY);
-            spawnPosition.x = Random.Range(-levelWidth, levelWidth);
-            Instantiate(prefabList[prefabIndex], spawnPosition, Quaternion.identity);
+
+            // Spawn obstacle
+            if (Random.Range(0f, 1f) <=  obstacleSpawnProb)
+            {
+                spawnPosition.x = Random.Range(-levelWidth, levelWidth);
+
+                rand = Random.Range(0f, 1f);
+                int obstacleIndex = -1;
+
+                while (rand > obstaclesProbs[++obstacleIndex]) ;
+
+                Instantiate(obstaclesList[obstacleIndex], spawnPosition, Quaternion.identity);
+
+                spawnPosition.y += Random.Range(-.1f, .2f);
+            }
+
+            // Find a free position
+            do
+            {
+                spawnPosition.x = Random.Range(-levelWidth, levelWidth);
+            }
+            while (Physics2D.OverlapBox(spawnPosition, new Vector2(1.2f, .3f), 0f) != null);
+
+            rand = Random.Range(0f, 1f);
+            int platformIndex = -1;
+
+            while (rand > platformsProbs[++platformIndex]) ;
+
+            Instantiate(platformsList[platformIndex], spawnPosition, Quaternion.identity);
         }
     }
 

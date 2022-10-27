@@ -29,7 +29,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private AudioClip[] _fireSounds;
     [SerializeField] private AudioSource _gameOverSound;
 
-    private bool isDead = false;
+    public bool isDead = false;
 
 
     void Awake()
