@@ -66,7 +66,7 @@ public class PlayerController : MonoBehaviour
             {
                 // Make the player bounce
                 Vector2 velocity = _rigidbody.velocity;
-                velocity.y = jumpForce;
+                velocity.y = other.gameObject.CompareTag("Spring") ? jumpForce*3 : jumpForce;
                 _rigidbody.velocity = velocity;
 
                 AudioSystem.Instance.PlaySound(_jumpSound);
