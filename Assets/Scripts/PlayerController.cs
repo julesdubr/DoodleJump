@@ -78,6 +78,16 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
+        // Teleport player to the other side of the screen
+        Vector3 position = Camera.main.WorldToViewportPoint(transform.position);
+
+        if (position.x < 0f)
+            position = new Vector3(1f, position.y, position.z);
+        else if (position.x >= 1f)
+            position = new Vector3(0f, position.y, position.z);
+
+        transform.position = Camera.main.ViewportToWorldPoint(position);
+
         // Flip sprite depending on input
         if (_input.x > 0 && !_facingRight)
             Flip();
