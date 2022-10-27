@@ -7,6 +7,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 142538480784190496, guid: 94cde8ebe7695894087f1e8083917f00, type: 3}
+      propertyPath: onLanding
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 7128966847243075458, guid: 94cde8ebe7695894087f1e8083917f00, type: 3}
       propertyPath: m_Name
       value: DestroyablePlatform
@@ -62,6 +66,7 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: -3285733916836506450, guid: 94cde8ebe7695894087f1e8083917f00, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 94cde8ebe7695894087f1e8083917f00, type: 3}
+<<<<<<< HEAD
 --- !u!1 &1939756693985331159 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7128966847243075458, guid: 94cde8ebe7695894087f1e8083917f00, type: 3}
@@ -93,3 +98,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   powerUps:
   - {fileID: 5460107401614279722, guid: f8b4d06705521ea4a8427c547a6063af, type: 3}
+=======
+>>>>>>> 3e55925a484a2598161bee9f4bac7c7c3b002750

@@ -4,31 +4,33 @@ using UnityEngine;
 
 public class MovingPlatform : MonoBehaviour
 {
-    private Rigidbody2D rb;
+    private Rigidbody2D _rigidbody;
+    private float _speed;
+    private int _direction;
 
-    private float speed;
-    private int direction;
-
-    // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        rb = GetComponent<Rigidbody2D>();
-        direction = Random.Range(0, 1) * 2 - 1;
-        speed = Random.Range(1.5f, 3f);
+        _rigidbody = GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
-    void Update()
+    void Start()
+    {
+        _direction = Random.Range(0, 1) * 2 - 1;
+        _speed = Random.Range(1.5f, 3f);
+    }
+
+    void FixedUpdate()
     {
         Vector3 pos = Camera.main.WorldToViewportPoint(transform.position);
 
         if (pos.x < 0.1f)
-            direction = 1;
+            _direction = 1;
         else if (pos.x >= 0.9f)
-            direction = -1;
+            _direction = -1;
 
-        Vector2 velocity = rb.velocity;
-        velocity.x = direction * speed;
-        rb.velocity = velocity;
+
+        Vector2 velocity = _rigidbody.velocity;
+        velocity.x = _direction * _speed;
+        _rigidbody.velocity = velocity;
     }
 }

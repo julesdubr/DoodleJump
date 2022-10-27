@@ -6,16 +6,16 @@ public class Projectile : MonoBehaviour
 {
 
     public float speed = 20f;
-    private Rigidbody2D _rb;
+    private Rigidbody2D _rigidbody;
 
     void Awake()
     {
-        _rb = GetComponent<Rigidbody2D>();
+        _rigidbody = GetComponent<Rigidbody2D>();
     }
 
     void Start()
     {
-        _rb.velocity = transform.up * speed;
+        _rigidbody.velocity = transform.up * speed;
     }
 
     void OnBecameInvisible()

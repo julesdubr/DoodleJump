@@ -2,114 +2,144 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.SceneManagement;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerController : MonoBehaviour
 {
-    private Rigidbody2D rb;
+    private Rigidbody2D _rigidbody;
+    private Collider2D _collider;
+    private Animator _animator;
 
-    public Animator animator;
+    private Vector2 _input;
+    private Vector2 _constantVelocity;
+    [SerializeField] private float smoothInputSpeed = .1f;
+    private bool _facingRight = true;
+
     public float speed = 5f;
     public float jumpForce = 11f;
-    private bool facingRight = true;
-
-    private Vector2 input;
-    private Vector2 constantVelocity;
-    private Vector2 smoothInputVelocity;
 
     public Transform firePoint;
     public GameObject projectilePrefab;
 
     public TextMeshProUGUI scoreText;
-    private float distance = 0;
+    private float _distance = 0;
 
-    [SerializeField] private float smoothInputSpeed = .1f;
+    [SerializeField] private AudioSource _jumpSoundEffect;
+    [SerializeField] private AudioSource _fireSoundEffect;
+    [SerializeField] private AudioClip[] _fireSounds;
+    // [SerializeField] private AudioSource _gameOverSoundEffect;
+
 
     void Awake()
     {
-        rb = GetComponent<Rigidbody2D>();
+        _rigidbody = GetComponent<Rigidbody2D>();
+        _animator = GetComponent<Animator>();
+        _collider = GetComponent<Collider2D>();
     }
 
     void OnMove(InputValue movementValue)
     {
-        input = movementValue.Get<Vector2>();
+        _input = movementValue.Get<Vector2>();
     }
 
     void OnFire()
     {
-        animator.SetTrigger("Fire");
+        _fireSoundEffect.clip = _fireSounds[Random.Range(0, _fireSounds.Length)];
+        _fireSoundEffect.Play();
+
+        _animator.SetTrigger("Fire");
         Instantiate(projectilePrefab, firePoint.position, firePoint.rotation);
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
+    void OnCollisionEnter2D(Collision2D other)
     {
-        if (collision.gameObject.CompareTag("Ennemy") || collision.gameObject.CompareTag("BlackHole"))
-            GameOver();
+        ColliderController controller = other.gameObject.GetComponent<ColliderController>();
 
+<<<<<<< HEAD
         if (collision.relativeVelocity.y < 0f)
             return;
 
         Vector2 velocity = rb.velocity;
         velocity.y = collision.gameObject.CompareTag("Spring") ? jumpForce*3 : jumpForce;
         rb.velocity = velocity;
+=======
+        if (controller == null)
+            return;
 
-        animator.SetTrigger("Jump");
+        // Check if player is colliding while coming from above
+        bool fromAbove = other.relativeVelocity.y >= 0f;
+
+        if (fromAbove)
+        {
+            if (controller.bounce)
+            {
+                // Make the player bounce
+                Vector2 velocity = _rigidbody.velocity;
+                velocity.y = other.gameObject.CompareTag("Spring") ? jumpForce*3 : jumpForce;
+                _rigidbody.velocity = velocity;
+
+                _jumpSoundEffect.Play();
+                _animator.SetTrigger("Jump");
+            }
+
+            // Handle the landing impact on the object
+            controller.ProcessPlayerLanding(_collider);
+        }
+>>>>>>> 3e55925a484a2598161bee9f4bac7c7c3b002750
+
+        // Kill the player
+        if (controller.killPlayer)
+            GameOver();
     }
 
-    void Update()
+    void FixedUpdate()
     {
-        // Game over when player falls off the screen
-        Vector3 pos = Camera.main.WorldToViewportPoint(transform.position);
+        // Teleport player to the other side of the screen
+        Vector3 position = Camera.main.WorldToViewportPoint(transform.position);
 
-        if (pos.y < -0.1f)
+        if (position.x < 0f)
+            position = new Vector3(1f, position.y, position.z);
+        else if (position.x >= 1f)
+            position = new Vector3(0f, position.y, position.z);
+
+        transform.position = Camera.main.ViewportToWorldPoint(position);
+
+        // Handling falling off the screen
+        if (position.y < -0.1f)
             GameOver();
 
-        // Teleport player to the other side of the screen
-        if (pos.x < 0f)
-            pos = new Vector3(1f, pos.y, pos.z);
-        else if (pos.x >= 1f)
-            pos = new Vector3(0f, pos.y, pos.z);
-
-        transform.position = Camera.main.ViewportToWorldPoint(pos);
-
         // Flip sprite depending on input
-        if (input.x > 0 && !facingRight)
+        if (_input.x > 0 && !_facingRight)
             Flip();
-        else if (input.x < 0 && facingRight)
+        else if (_input.x < 0 && _facingRight)
             Flip();
 
         // Update score
-        if (transform.position.y > distance)
+        if (transform.position.y > _distance)
         {
-            distance = transform.position.y;
-            scoreText.text = (distance * 50).ToString("F0");
+            _distance = transform.position.y;
+            scoreText.text = (_distance * 50).ToString("F0");
         }
-    }
 
-    void FixedUpdate() {
-        // Movement Right or Left
-        constantVelocity = Vector2.Lerp(constantVelocity, input * speed, smoothInputSpeed);
+        // Move
+        _constantVelocity = Vector2.Lerp(_constantVelocity, _input * speed, smoothInputSpeed);
 
-        Vector2 velocity = rb.velocity;
-        velocity.x = constantVelocity.x;
-        rb.velocity = velocity;
+        Vector2 velocity = _rigidbody.velocity;
+        velocity.x = _constantVelocity.x;
+        _rigidbody.velocity = velocity;
     }
 
     void Flip()
     {
-        // Vector3 currentScale = gameObject.transform.localScale;
-        // currentScale.x *= -1;
-        // gameObject.transform.localScale = currentScale;
-
-        facingRight = !facingRight;
-
+        _facingRight = !_facingRight;
         transform.Rotate(0f, 180f, 0f);
     }
 
-    void GameOver()
+    public void GameOver()
     {
+        // _gameOverSoundEffect.Play();
         SceneManager.LoadScene(0);
     }
 }
