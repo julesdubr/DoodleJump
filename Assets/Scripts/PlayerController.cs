@@ -127,13 +127,6 @@ public class PlayerController : MonoBehaviour
 
     public void GameOver()
     {
-        StartCoroutine(PlayGameOverSound());
-    }
-
-    IEnumerator PlayGameOverSound()
-    {
-        _gameOverSoundEffect.Play();
-        yield return new WaitUntil(() => _gameOverSoundEffect.isPlaying == false);
         SceneManager.LoadScene(0);
     }
 }
