@@ -10,6 +10,7 @@ public class Powerup : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (anchor == null) {Destroy(gameObject); return;}
         this.transform.SetPositionAndRotation(pos + anchor.position, Quaternion.identity);
     }
 }

@@ -57,14 +57,6 @@ public class PlayerController : MonoBehaviour
     {
         ColliderController controller = other.gameObject.GetComponent<ColliderController>();
 
-<<<<<<< HEAD
-        if (collision.relativeVelocity.y < 0f)
-            return;
-
-        Vector2 velocity = rb.velocity;
-        velocity.y = collision.gameObject.CompareTag("Spring") ? jumpForce*3 : jumpForce;
-        rb.velocity = velocity;
-=======
         if (controller == null)
             return;
 
@@ -87,7 +79,6 @@ public class PlayerController : MonoBehaviour
             // Handle the landing impact on the object
             controller.ProcessPlayerLanding(_collider);
         }
->>>>>>> 3e55925a484a2598161bee9f4bac7c7c3b002750
 
         // Kill the player
         if (controller.killPlayer)

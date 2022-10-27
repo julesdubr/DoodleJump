@@ -7,12 +7,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-<<<<<<< HEAD
-    - target: {fileID: -3285733916836506450, guid: 94cde8ebe7695894087f1e8083917f00, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-=======
     - target: {fileID: 142538480784190496, guid: 94cde8ebe7695894087f1e8083917f00, type: 3}
       propertyPath: bounce
       value: 0
@@ -25,7 +19,6 @@ PrefabInstance:
       propertyPath: _trapBreakSoundEffect
       value: 
       objectReference: {fileID: -3755876351834058087}
->>>>>>> 3e55925a484a2598161bee9f4bac7c7c3b002750
     - target: {fileID: 5489487453852585165, guid: 94cde8ebe7695894087f1e8083917f00, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -245,3 +238,17 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &-6472236779211615422
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8608601347904708643}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10bf053561a9b5b4db4858398df1b089, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  powerUps:
+  - {fileID: 5460107401614279722, guid: f8b4d06705521ea4a8427c547a6063af, type: 3}

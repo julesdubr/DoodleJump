@@ -13,7 +13,9 @@ GameObject:
   - component: {fileID: 4064183594592755470}
   - component: {fileID: -3902255808131379728}
   - component: {fileID: -1629262756505654975}
-  m_Layer: 0
+  - component: {fileID: 6635995399720323957}
+  - component: {fileID: 9003415591203181488}
+  m_Layer: 1
   m_Name: Spring
   m_TagString: Spring
   m_Icon: {fileID: 0}
@@ -96,7 +98,7 @@ EdgeCollider2D:
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_UsedByEffector: 0
+  m_UsedByEffector: 1
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   m_EdgeRadius: 0
@@ -135,3 +137,38 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anchor: {fileID: 0}
   pos: {x: 0, y: 0, z: 0}
+--- !u!251 &6635995399720323957
+PlatformEffector2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5460107401614279722}
+  m_Enabled: 1
+  m_UseColliderMask: 1
+  m_ColliderMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RotationalOffset: 0
+  m_UseOneWay: 1
+  m_UseOneWayGrouping: 0
+  m_SurfaceArc: 20
+  m_UseSideFriction: 0
+  m_UseSideBounce: 0
+  m_SideArc: 1
+--- !u!114 &9003415591203181488
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5460107401614279722}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd8159adfd8d08245bf799c1734c4043, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bounce: 1
+  killPlayer: 0
+  onLanding: 0
+  _trapBreakSoundEffect: {fileID: 0}

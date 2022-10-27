@@ -12,12 +12,9 @@ GameObject:
   - component: {fileID: 7128966847243075484}
   - component: {fileID: 7128966847243075485}
   - component: {fileID: 5489487453852585165}
-<<<<<<< HEAD
-  - component: {fileID: -3285733916836506450}
-=======
   - component: {fileID: 142538480784190496}
   - component: {fileID: 896460408973139062}
->>>>>>> 3e55925a484a2598161bee9f4bac7c7c3b002750
+  - component: {fileID: -6108839962704917626}
   m_Layer: 0
   m_Name: Platform
   m_TagString: Platform
@@ -131,11 +128,7 @@ PlatformEffector2D:
   m_UseSideFriction: 0
   m_UseSideBounce: 0
   m_SideArc: 1
-<<<<<<< HEAD
---- !u!114 &-3285733916836506450
-=======
 --- !u!114 &142538480784190496
->>>>>>> 3e55925a484a2598161bee9f4bac7c7c3b002750
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -144,19 +137,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 7128966847243075458}
   m_Enabled: 1
   m_EditorHideFlags: 0
-<<<<<<< HEAD
-  m_Script: {fileID: 11500000, guid: 10bf053561a9b5b4db4858398df1b089, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  powerUps:
-  - {fileID: 5460107401614279722, guid: f8b4d06705521ea4a8427c547a6063af, type: 3}
-=======
   m_Script: {fileID: 11500000, guid: dd8159adfd8d08245bf799c1734c4043, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   bounce: 1
   killPlayer: 0
   onLanding: 0
+  _trapBreakSoundEffect: {fileID: 0}
 --- !u!114 &896460408973139062
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -169,4 +156,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f62fb7b320fe724bb1af2ac188565a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
->>>>>>> 3e55925a484a2598161bee9f4bac7c7c3b002750
+--- !u!114 &-6108839962704917626
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7128966847243075458}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10bf053561a9b5b4db4858398df1b089, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  powerUps:
+  - {fileID: 5460107401614279722, guid: f8b4d06705521ea4a8427c547a6063af, type: 3}
