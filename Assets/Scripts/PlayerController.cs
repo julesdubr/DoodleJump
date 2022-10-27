@@ -22,14 +22,14 @@ public class PlayerController : MonoBehaviour
 
     public Transform firePoint;
     public GameObject projectilePrefab;
+    public Transform starsPoint;
+    public GameObject starsPrefab;
 
     public TextMeshProUGUI scoreText;
     private float _distance = 0;
 
     [SerializeField] private AudioClip[] _fireSounds;
     [SerializeField] private AudioSource _gameOverSound;
-
-    [SerializeField] private SpriteRenderer _stars;
 
     public bool isDead = false;
 
@@ -39,8 +39,6 @@ public class PlayerController : MonoBehaviour
         _rigidbody = GetComponent<Rigidbody2D>();
         _animator = GetComponent<Animator>();
         _collider = GetComponent<Collider2D>();
-
-        _stars.enabled = false;
     }
 
     void OnMove(InputValue movementValue)
@@ -88,7 +86,8 @@ public class PlayerController : MonoBehaviour
         // Kill the player
         if (controller.killPlayer)
         {
-            _stars.enabled = true;
+            GameObject stars = Instantiate(starsPrefab, starsPoint.position, starsPoint.rotation);
+            stars.transform.parent = transform;
             GameOver();
         }
     }

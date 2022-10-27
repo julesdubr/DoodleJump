@@ -151,12 +151,15 @@ MonoBehaviour:
   speed: 5
   jumpForce: 11
   firePoint: {fileID: 0}
-  projectilePrefab: {fileID: 0}
+  projectilePrefab: {fileID: 972017316655451066, guid: 780abb0f210505f4fb2a55df711f171b, type: 3}
+  starsPoint: {fileID: 0}
+  starsPrefab: {fileID: 6592546570815913698, guid: 5983109e4f5291f47884b6691331ff04, type: 3}
   scoreText: {fileID: 0}
   _fireSounds:
   - {fileID: 8300000, guid: 012f2276fa942fc40aa6b40e6aa036b9, type: 3}
   - {fileID: 8300000, guid: ca20109e577965742a7131eb7bc2033f, type: 3}
   _gameOverSound: {fileID: 5889320610312885142}
+  isDead: 0
 --- !u!114 &8799662662848867063
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -25,6 +25,6 @@ public class SpawnPowerup : MonoBehaviour
             powerUps[indexPup], transform.position + offset, Quaternion.identity
         );
 
-        powerup.transform.parent = gameObject.transform;
+        powerup.transform.parent = transform;
     }
 }
