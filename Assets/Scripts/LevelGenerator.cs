@@ -24,33 +24,31 @@ public class LevelGenerator : MonoBehaviour
 
         for (int i = 0; i < numberOfPlatforms; i++)
         {
-            spawnPosition.y += Random.Range(minY, maxY);
 
             // Spawn obstacle
             if (Random.Range(0f, 1f) <=  obstacleSpawnProb)
             {
-                spawnPosition.x = Random.Range(-levelWidth, levelWidth);
-
                 rand = Random.Range(0f, 1f);
                 int obstacleIndex = -1;
-
                 while (rand > obstaclesProbs[++obstacleIndex]) ;
 
-                Instantiate(obstaclesList[obstacleIndex], spawnPosition, Quaternion.identity);
-
+                spawnPosition.x = Random.Range(-levelWidth, levelWidth);
                 spawnPosition.y += Random.Range(-.1f, .2f);
+
+                Instantiate(obstaclesList[obstacleIndex], spawnPosition, Quaternion.identity);
             }
 
             // Find a free position
+            spawnPosition.y += Random.Range(minY, maxY);
             do
             {
                 spawnPosition.x = Random.Range(-levelWidth, levelWidth);
             }
             while (Physics2D.OverlapBox(spawnPosition, new Vector2(1.2f, .3f), 0f) != null);
 
+            // Spawn a random platform
             rand = Random.Range(0f, 1f);
             int platformIndex = -1;
-
             while (rand > platformsProbs[++platformIndex]) ;
 
             Instantiate(platformsList[platformIndex], spawnPosition, Quaternion.identity);

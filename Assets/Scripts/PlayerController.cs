@@ -29,6 +29,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private AudioClip[] _fireSounds;
     [SerializeField] private AudioSource _gameOverSound;
 
+    [SerializeField] private SpriteRenderer _stars;
+
     public bool isDead = false;
 
 
@@ -37,15 +39,21 @@ public class PlayerController : MonoBehaviour
         _rigidbody = GetComponent<Rigidbody2D>();
         _animator = GetComponent<Animator>();
         _collider = GetComponent<Collider2D>();
+
+        _stars.enabled = false;
     }
 
     void OnMove(InputValue movementValue)
     {
+        if (isDead) return;
+
         _input = movementValue.Get<Vector2>();
     }
 
     void OnFire()
     {
+        if (isDead) return;
+
         AudioSystem.Instance.PlaySound(_fireSounds[Random.Range(0, _fireSounds.Length)]);
         _animator.SetTrigger("Fire");
         Instantiate(projectilePrefab, firePoint.position, firePoint.rotation);
@@ -79,7 +87,10 @@ public class PlayerController : MonoBehaviour
 
         // Kill the player
         if (controller.killPlayer)
+        {
+            _stars.enabled = true;
             GameOver();
+        }
     }
 
     void FixedUpdate()
