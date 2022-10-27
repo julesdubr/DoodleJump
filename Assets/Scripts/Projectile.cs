@@ -7,6 +7,7 @@ public class Projectile : MonoBehaviour
 
     public float speed = 20f;
     private Rigidbody2D _rigidbody;
+    [SerializeField] private AudioClip _monsterDeathSound;
 
     void Awake()
     {
@@ -27,6 +28,7 @@ public class Projectile : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Ennemy"))
         {
+            AudioSystem.Instance.PlaySound(_monsterDeathSound);
             Destroy(collision.gameObject);
             Destroy(gameObject);
         }
