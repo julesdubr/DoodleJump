@@ -20,9 +20,9 @@ public class LevelGenerator : MonoBehaviour
         for (int i = 0; i < numberOfPlatforms; i++)
         {
             float rand = UnityEngine.Random.Range(0f, 1f);
-            int prefabIndex = 0;
+            int prefabIndex = -1;
 
-            while (rand > probabilities[prefabIndex]) prefabIndex++;
+            while (rand > probabilities[++prefabIndex]) ;
 
             spawnPosition.y += Random.Range(minY, maxY);
             spawnPosition.x = Random.Range(-levelWidth, levelWidth);

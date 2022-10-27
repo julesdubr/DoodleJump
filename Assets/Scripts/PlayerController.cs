@@ -27,7 +27,9 @@ public class PlayerController : MonoBehaviour
     private float _distance = 0;
 
     [SerializeField] private AudioClip[] _fireSounds;
-    [SerializeField] private AudioSource _gameOverSoundEffect;
+    [SerializeField] private AudioSource _gameOverSound;
+
+    private bool isDead = false;
 
 
     void Awake()
@@ -93,7 +95,7 @@ public class PlayerController : MonoBehaviour
         transform.position = Camera.main.ViewportToWorldPoint(position);
 
         // Handling falling off the screen
-        if (position.y < -0.1f)
+        if (!isDead && position.y < -0.1f)
             GameOver();
 
         // Flip sprite depending on input
@@ -125,6 +127,15 @@ public class PlayerController : MonoBehaviour
 
     public void GameOver()
     {
+        isDead = true;
+        _collider.enabled = false;
+        StartCoroutine(PlayGameOverSound());
+    }
+
+    IEnumerator PlayGameOverSound()
+    {
+        _gameOverSound.Play();
+        yield return new WaitWhile(() => _gameOverSound.isPlaying);
         SceneManager.LoadScene(0);
     }
 }

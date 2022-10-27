@@ -14,7 +14,7 @@ public class SpawnPowerup : MonoBehaviour
         if (Random.Range(0f, 1f) > spawnProb)
             return;
 
-        Vector3 offset = new Vector3(Random.Range(-.2f, .2f), .1f, 0f);
+        Vector3 offset = new Vector3(Random.Range(-.3f, .4f), .1f, 0f);
 
         float rand = Random.Range(0f, 1f);
         int indexPup = -1;

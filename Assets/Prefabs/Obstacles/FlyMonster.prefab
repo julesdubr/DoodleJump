@@ -10,10 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 2005621482011971374}
   - component: {fileID: 2005621482011971377}
-  - component: {fileID: 2005621482011971376}
   - component: {fileID: 4463206504180626686}
   - component: {fileID: 1408308883400374104}
   - component: {fileID: -7800799996342055242}
+  - component: {fileID: 8755558373157983108}
   m_Layer: 0
   m_Name: FlyMonster
   m_TagString: Ennemy
@@ -80,31 +80,12 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1.51, y: 0.89}
+  m_Size: {x: 1.22, y: 1.75}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!95 &2005621482011971376
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2005621482011971379}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 9feaaa7b7de56c14ebc420e826284dc2, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!58 &4463206504180626686
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -134,8 +115,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bounce: 1
+  bounceCoef: 1
   killPlayer: 1
   onLanding: 2
+  _hitSound: {fileID: 0}
 --- !u!114 &-7800799996342055242
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -148,3 +131,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f62fb7b320fe724bb1af2ac188565a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &8755558373157983108
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2005621482011971379}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5b1ca54433933e948af852662b3e4e25, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

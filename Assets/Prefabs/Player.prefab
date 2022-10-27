@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 8799662662848867060}
   - component: {fileID: 8799662662848867063}
   - component: {fileID: 8799662662848867062}
-  - component: {fileID: 8720832869638628268}
+  - component: {fileID: 5889320610312885142}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -153,11 +153,10 @@ MonoBehaviour:
   firePoint: {fileID: 0}
   projectilePrefab: {fileID: 0}
   scoreText: {fileID: 0}
-  _jumpSound: {fileID: 8300000, guid: 2119d6c86fb34c543869c50b45ed11c5, type: 3}
   _fireSounds:
   - {fileID: 8300000, guid: 012f2276fa942fc40aa6b40e6aa036b9, type: 3}
   - {fileID: 8300000, guid: ca20109e577965742a7131eb7bc2033f, type: 3}
-  _gameOverSoundEffect: {fileID: 8720832869638628268}
+  _gameOverSound: {fileID: 5889320610312885142}
 --- !u!114 &8799662662848867063
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -207,7 +206,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!82 &8720832869638628268
+--- !u!82 &5889320610312885142
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
