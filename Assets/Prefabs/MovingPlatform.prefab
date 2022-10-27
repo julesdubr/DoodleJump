@@ -87,6 +87,20 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &-6232985699866127986
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6005250022268863416}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10bf053561a9b5b4db4858398df1b089, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  powerUps:
+  - {fileID: 5460107401614279722, guid: f8b4d06705521ea4a8427c547a6063af, type: 3}
 --- !u!114 &-4481554632913239421
 MonoBehaviour:
   m_ObjectHideFlags: 0

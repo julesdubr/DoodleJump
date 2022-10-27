@@ -48,14 +48,11 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.CompareTag("Ennemy") || collision.gameObject.CompareTag("BlackHole"))
             GameOver();
 
-        if (!collision.gameObject.CompareTag("Platform"))
-            return;
-
         if (collision.relativeVelocity.y < 0f)
             return;
 
         Vector2 velocity = rb.velocity;
-        velocity.y = jumpForce;
+        velocity.y = collision.gameObject.CompareTag("Spring") ? jumpForce*3 : jumpForce;
         rb.velocity = velocity;
 
         animator.SetTrigger("Jump");
