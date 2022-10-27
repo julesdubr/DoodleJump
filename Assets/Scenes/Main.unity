@@ -1125,6 +1125,18 @@ PrefabInstance:
       propertyPath: projectilePrefab
       value: 
       objectReference: {fileID: 972017316655451066, guid: 780abb0f210505f4fb2a55df711f171b, type: 3}
+    - target: {fileID: 8799662662848867060, guid: 47b2f7a5084806a47af5fb0f37cbda1f, type: 3}
+      propertyPath: _fireSounds.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8799662662848867060, guid: 47b2f7a5084806a47af5fb0f37cbda1f, type: 3}
+      propertyPath: _fireSounds.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 012f2276fa942fc40aa6b40e6aa036b9, type: 3}
+    - target: {fileID: 8799662662848867060, guid: 47b2f7a5084806a47af5fb0f37cbda1f, type: 3}
+      propertyPath: _fireSounds.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: ca20109e577965742a7131eb7bc2033f, type: 3}
     - target: {fileID: 8799662662848867061, guid: 47b2f7a5084806a47af5fb0f37cbda1f, type: 3}
       propertyPath: m_Size.y
       value: 0.22207713

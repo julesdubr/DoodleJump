@@ -26,6 +26,11 @@ public class PlayerController : MonoBehaviour
     public TextMeshProUGUI scoreText;
     private float _distance = 0;
 
+    [SerializeField] private AudioSource _jumpSoundEffect;
+    [SerializeField] private AudioSource _fireSoundEffect;
+    [SerializeField] private AudioClip[] _fireSounds;
+    // [SerializeField] private AudioSource _gameOverSoundEffect;
+
 
     void Awake()
     {
@@ -41,6 +46,9 @@ public class PlayerController : MonoBehaviour
 
     void OnFire()
     {
+        _fireSoundEffect.clip = _fireSounds[Random.Range(0, _fireSounds.Length)];
+        _fireSoundEffect.Play();
+
         _animator.SetTrigger("Fire");
         Instantiate(projectilePrefab, firePoint.position, firePoint.rotation);
     }
@@ -64,6 +72,7 @@ public class PlayerController : MonoBehaviour
                 velocity.y = jumpForce;
                 _rigidbody.velocity = velocity;
 
+                _jumpSoundEffect.Play();
                 _animator.SetTrigger("Jump");
             }
 
@@ -121,6 +130,7 @@ public class PlayerController : MonoBehaviour
 
     public void GameOver()
     {
+        // _gameOverSoundEffect.Play();
         SceneManager.LoadScene(0);
     }
 }

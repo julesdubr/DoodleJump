@@ -10,6 +10,8 @@ public class ColliderController : MonoBehaviour
     public bool killPlayer = false;
     [SerializeField] private LandingImpact onLanding = LandingImpact.None;
 
+    [SerializeField] private AudioSource _trapBreakSoundEffect;
+
     private Collider2D _collider;
     private Rigidbody2D _rigidbody;
     private Animator _animator;
@@ -28,6 +30,7 @@ public class ColliderController : MonoBehaviour
             case ColliderController.LandingImpact.Break:
                 Physics2D.IgnoreCollision(player_collider, _collider);
 
+                _trapBreakSoundEffect.Play();
                 _animator.SetTrigger("Destroy");
                 _rigidbody.isKinematic = false;
                 _rigidbody.gravityScale = 1f;
