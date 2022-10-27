@@ -88,6 +88,10 @@ public class PlayerController : MonoBehaviour
 
         transform.position = Camera.main.ViewportToWorldPoint(position);
 
+        // Handling falling off the screen
+        if (position.y < -0.1f)
+            GameOver();
+
         // Flip sprite depending on input
         if (_input.x > 0 && !_facingRight)
             Flip();
