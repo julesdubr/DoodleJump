@@ -123,9 +123,4 @@ public class PlayerController : MonoBehaviour
     {
         SceneManager.LoadScene(0);
     }
-
-    public Animator GetAnimator()
-    {
-        return _animator;
-    }
 }
