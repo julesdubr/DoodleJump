@@ -2,117 +2,122 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.SceneManagement;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerController : MonoBehaviour
 {
-    private Rigidbody2D rb;
+    private Rigidbody2D _rigidbody;
+    private Collider2D _collider;
+    private Animator _animator;
 
-    public Animator animator;
-    public float speed = 5f;
-    public float jumpForce = 11f;
-    private bool facingRight = true;
-
-    private Vector2 input;
-    private Vector2 constantVelocity;
-    private Vector2 smoothInputVelocity;
+    private Vector2 _input;
+    private Vector2 _constantVelocity;
+    [SerializeField] private float smoothInputSpeed = .1f;
+    private bool _facingRight = true;
 
     public Transform firePoint;
     public GameObject projectilePrefab;
+    public float speed = 5f;
+    public float jumpForce = 11f;
 
     public TextMeshProUGUI scoreText;
-    private float distance = 0;
+    private float _distance = 0;
 
-    [SerializeField] private float smoothInputSpeed = .1f;
 
     void Awake()
     {
-        rb = GetComponent<Rigidbody2D>();
+        _rigidbody = GetComponent<Rigidbody2D>();
+        _animator = GetComponent<Animator>();
+        _collider = GetComponent<Collider2D>();
     }
 
     void OnMove(InputValue movementValue)
     {
-        input = movementValue.Get<Vector2>();
+        _input = movementValue.Get<Vector2>();
     }
 
     void OnFire()
     {
-        animator.SetTrigger("Fire");
+        _animator.SetTrigger("Fire");
         Instantiate(projectilePrefab, firePoint.position, firePoint.rotation);
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
+    void OnCollisionEnter2D(Collision2D other)
     {
-        if (collision.gameObject.CompareTag("Ennemy") || collision.gameObject.CompareTag("BlackHole"))
+        ColliderController controller = other.gameObject.GetComponent<ColliderController>();
+
+        if (controller == null)
+            return;
+
+        bool fromAbove = other.relativeVelocity.y > 0f;
+
+        if (fromAbove)
+        {
+            if (controller.bounce)
+            {
+                Vector2 velocity = _rigidbody.velocity;
+                velocity.y = jumpForce;
+                _rigidbody.velocity = velocity;
+
+                _animator.SetTrigger("Jump");
+            }
+
+            controller.ProcessPlayerLanding(_collider);
+        }
+
+        if (controller.killPlayer)
             GameOver();
-
-        if (!collision.gameObject.CompareTag("Platform"))
-            return;
-
-        if (collision.relativeVelocity.y < 0f)
-            return;
-
-        Vector2 velocity = rb.velocity;
-        velocity.y = jumpForce;
-        rb.velocity = velocity;
-
-        animator.SetTrigger("Jump");
     }
-
-    void Update()
+ 
+    void FixedUpdate()
     {
-        // Game over when player falls off the screen
-        Vector3 pos = Camera.main.WorldToViewportPoint(transform.position);
-
-        if (pos.y < -0.1f)
-            GameOver();
-
         // Teleport player to the other side of the screen
-        if (pos.x < 0f)
-            pos = new Vector3(1f, pos.y, pos.z);
-        else if (pos.x >= 1f)
-            pos = new Vector3(0f, pos.y, pos.z);
+        Vector3 position = Camera.main.WorldToViewportPoint(transform.position);
 
-        transform.position = Camera.main.ViewportToWorldPoint(pos);
+        if (position.x < 0f)
+            position = new Vector3(1f, position.y, position.z);
+        else if (position.x >= 1f)
+            position = new Vector3(0f, position.y, position.z);
+
+        transform.position = Camera.main.ViewportToWorldPoint(position);
 
         // Flip sprite depending on input
-        if (input.x > 0 && !facingRight)
+        if (_input.x > 0 && !_facingRight)
             Flip();
-        else if (input.x < 0 && facingRight)
+        else if (_input.x < 0 && _facingRight)
             Flip();
 
         // Update score
-        if (transform.position.y > distance)
+        if (transform.position.y > _distance)
         {
-            distance = transform.position.y;
-            scoreText.text = (distance * 50).ToString("F0");
+            _distance = transform.position.y;
+            scoreText.text = (_distance * 50).ToString("F0");
         }
-    }
 
-    void FixedUpdate() {
-        // Movement Right or Left
-        constantVelocity = Vector2.Lerp(constantVelocity, input * speed, smoothInputSpeed);
+        // Move
+        _constantVelocity = Vector2.Lerp(_constantVelocity, _input * speed, smoothInputSpeed);
 
-        Vector2 velocity = rb.velocity;
-        velocity.x = constantVelocity.x;
-        rb.velocity = velocity;
+        Vector2 velocity = _rigidbody.velocity;
+        velocity.x = _constantVelocity.x;
+        _rigidbody.velocity = velocity;
     }
 
     void Flip()
     {
-        // Vector3 currentScale = gameObject.transform.localScale;
-        // currentScale.x *= -1;
-        // gameObject.transform.localScale = currentScale;
-
-        facingRight = !facingRight;
+        _facingRight = !_facingRight;
 
         transform.Rotate(0f, 180f, 0f);
     }
 
-    void GameOver()
+    public void GameOver()
     {
         SceneManager.LoadScene(0);
+    }
+
+    public Animator GetAnimator()
+    {
+        return _animator;
     }
 }

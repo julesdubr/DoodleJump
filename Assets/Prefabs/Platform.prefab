@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 7128966847243075487}
   - component: {fileID: 7128966847243075484}
   - component: {fileID: 7128966847243075485}
-  - component: {fileID: 7128966847243075486}
   - component: {fileID: 5489487453852585165}
+  - component: {fileID: 142538480784190496}
   m_Layer: 0
   m_Name: Platform
   m_TagString: Platform
@@ -107,18 +107,6 @@ EdgeCollider2D:
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
   m_UseAdjacentEndPoint: 0
---- !u!114 &7128966847243075486
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7128966847243075458}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b70e726ab6cce54d8b5e53c79f89dbc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!251 &5489487453852585165
 PlatformEffector2D:
   m_ObjectHideFlags: 0
@@ -138,3 +126,15 @@ PlatformEffector2D:
   m_UseSideFriction: 0
   m_UseSideBounce: 0
   m_SideArc: 1
+--- !u!114 &142538480784190496
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7128966847243075458}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd8159adfd8d08245bf799c1734c4043, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

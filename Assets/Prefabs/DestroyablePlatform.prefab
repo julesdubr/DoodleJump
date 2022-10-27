@@ -7,9 +7,13 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 142538480784190496, guid: 94cde8ebe7695894087f1e8083917f00, type: 3}
+      propertyPath: onLanding
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 7128966847243075458, guid: 94cde8ebe7695894087f1e8083917f00, type: 3}
       propertyPath: m_Name
-      value: WhitePlatform
+      value: DestroyablePlatform
       objectReference: {fileID: 0}
     - target: {fileID: 7128966847243075484, guid: 94cde8ebe7695894087f1e8083917f00, type: 3}
       propertyPath: m_Sprite
@@ -61,20 +65,3 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 94cde8ebe7695894087f1e8083917f00, type: 3}
---- !u!1 &1939756693985331159 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7128966847243075458, guid: 94cde8ebe7695894087f1e8083917f00, type: 3}
-  m_PrefabInstance: {fileID: 8648120731082373205}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &-9219377743045057413
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1939756693985331159}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f30d2d0b629ce194dba63e4275f0cc77, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
