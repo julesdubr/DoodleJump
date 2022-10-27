@@ -17,10 +17,11 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float smoothInputSpeed = .1f;
     private bool _facingRight = true;
 
-    public Transform firePoint;
-    public GameObject projectilePrefab;
     public float speed = 5f;
     public float jumpForce = 11f;
+
+    public Transform firePoint;
+    public GameObject projectilePrefab;
 
     public TextMeshProUGUI scoreText;
     private float _distance = 0;
@@ -51,12 +52,14 @@ public class PlayerController : MonoBehaviour
         if (controller == null)
             return;
 
-        bool fromAbove = other.relativeVelocity.y > 0f;
+        // Check if player is colliding while coming from above
+        bool fromAbove = other.relativeVelocity.y >= 0f;
 
         if (fromAbove)
         {
             if (controller.bounce)
             {
+                // Make the player bounce
                 Vector2 velocity = _rigidbody.velocity;
                 velocity.y = jumpForce;
                 _rigidbody.velocity = velocity;
@@ -64,25 +67,17 @@ public class PlayerController : MonoBehaviour
                 _animator.SetTrigger("Jump");
             }
 
+            // Handle the landing impact on the object
             controller.ProcessPlayerLanding(_collider);
         }
 
+        // Kill the player
         if (controller.killPlayer)
             GameOver();
     }
- 
+
     void FixedUpdate()
     {
-        // Teleport player to the other side of the screen
-        Vector3 position = Camera.main.WorldToViewportPoint(transform.position);
-
-        if (position.x < 0f)
-            position = new Vector3(1f, position.y, position.z);
-        else if (position.x >= 1f)
-            position = new Vector3(0f, position.y, position.z);
-
-        transform.position = Camera.main.ViewportToWorldPoint(position);
-
         // Flip sprite depending on input
         if (_input.x > 0 && !_facingRight)
             Flip();
@@ -107,7 +102,6 @@ public class PlayerController : MonoBehaviour
     void Flip()
     {
         _facingRight = !_facingRight;
-
         transform.Rotate(0f, 180f, 0f);
     }
 

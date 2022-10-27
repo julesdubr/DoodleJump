@@ -5,9 +5,8 @@ using UnityEngine;
 public class MovingPlatform : MonoBehaviour
 {
     private Rigidbody2D _rigidbody;
-
-    private float speed;
-    private int direction;
+    private float _speed;
+    private int _direction;
 
     void Awake()
     {
@@ -16,8 +15,8 @@ public class MovingPlatform : MonoBehaviour
 
     void Start()
     {
-        direction = Random.Range(0, 1) * 2 - 1;
-        speed = Random.Range(1.5f, 3f);
+        _direction = Random.Range(0, 1) * 2 - 1;
+        _speed = Random.Range(1.5f, 3f);
     }
 
     void FixedUpdate()
@@ -25,12 +24,13 @@ public class MovingPlatform : MonoBehaviour
         Vector3 pos = Camera.main.WorldToViewportPoint(transform.position);
 
         if (pos.x < 0.1f)
-            direction = 1;
+            _direction = 1;
         else if (pos.x >= 0.9f)
-            direction = -1;
+            _direction = -1;
+
 
         Vector2 velocity = _rigidbody.velocity;
-        velocity.x = direction * speed;
+        velocity.x = _direction * _speed;
         _rigidbody.velocity = velocity;
     }
 }
