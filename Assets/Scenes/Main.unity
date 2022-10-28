@@ -551,7 +551,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1007510385
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -574,7 +574,7 @@ MonoBehaviour:
   - 0.8
   - 0.95
   - 1
-  obstacleSpawnProb: 0.01
+  obstacleSpawnProb: 0.1
   obstaclesList:
   - {fileID: 4531353817703123755, guid: ccc4ca841f2a28547b636d40eab8b5cf, type: 3}
   - {fileID: 2005621482011971379, guid: 5d61bf5e295f01e4e86e90336f72b15c, type: 3}
@@ -585,7 +585,6 @@ MonoBehaviour:
   - 0.6
   - 0.9
   - 1
-  numberOfPlatforms: 200
   levelWidth: 2.5
   minY: 0.5
   maxY: 1.5
