@@ -16,22 +16,21 @@ public class LevelGenerator : MonoBehaviour
     [SerializeField] private float maxY = 1.5f;
 
     private Vector3 spawnPosition = new Vector3(0f, -3f, 0f);
-    [SerializeField] private float spawnYLimit = 1.2f;
+    [SerializeField] private Transform spawnLimitPoint;
     private Collider2D hitCollider;
 
-    void Start()
+    void Awake()
     {
-        while (Camera.main.WorldToViewportPoint(spawnPosition).y < spawnYLimit)
-            SpawnObstaclesPlatforms();
+        while (CanSpawn()) SpawnObstaclesPlatforms();
     }
 
     void Update()
     {
-        if (Camera.main.WorldToViewportPoint(spawnPosition).y < spawnYLimit)
-            SpawnObstaclesPlatforms();
+        if (CanSpawn()) SpawnObstaclesPlatforms();
     }
 
-    private void SpawnObstaclesPlatforms() {
+    private void SpawnObstaclesPlatforms()
+    {
         // Spawn obstacle
         if (Random.Range(0f, 1f) <= obstacleSpawnProb)
         {
@@ -44,7 +43,7 @@ public class LevelGenerator : MonoBehaviour
 
         // Spawn a random platform
         GameObject platform = GetRandomPrefab(platformsList, platformsProbs);
-        
+
         // Randomize position
         RandomizeSpawn(minY, maxY);
         Instantiate(platform, spawnPosition, Quaternion.identity);
@@ -69,5 +68,10 @@ public class LevelGenerator : MonoBehaviour
         }
         while (hitCollider != null);
         spawnPosition.y += Random.Range(minY, maxY);
+    }
+
+    bool CanSpawn()
+    {
+        return spawnPosition.y <= spawnLimitPoint.position.y;
     }
 }
