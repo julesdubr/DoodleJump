@@ -25,6 +25,10 @@ public class PlayerController : MonoBehaviour
     public GameObject projectilePrefab;
     public Transform starsPoint;
     public GameObject starsPrefab;
+    public Transform propellerPoint;
+    public GameObject propellerPrefab;
+    public Transform jetpackPoint;
+    public GameObject jetpackPrefab;
 
     public TextMeshProUGUI scoreText;
     private float _distance = 0;
