@@ -175,6 +175,6 @@ MonoBehaviour:
   - {fileID: 4865520815696280180, guid: fccab7e7ded4dc5498e471d9d1fbda3a, type: 3}
   - {fileID: 5473020741145371992, guid: 56659c9f5fa50764f88e213dbb44f990, type: 3}
   probabilities:
+  - 0.3
+  - 0.6
   - 1
-  - 0
-  - 0

@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using TMPro;
 using UnityEngine.SceneManagement;
+using UnityEngine.InputSystem.XR;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerController : MonoBehaviour
@@ -14,6 +15,8 @@ public class PlayerController : MonoBehaviour
     private Renderer _renderer;
 
     private Vector2 _input;
+    private float flying = 0f;
+    private float flyingCoef = 0f;
     private Vector2 _constantVelocity;
     [SerializeField] private float smoothInputSpeed = .1f;
     private bool _facingRight = true;
@@ -84,6 +87,11 @@ public class PlayerController : MonoBehaviour
 
                 _animator.SetTrigger("Jump");
             }
+            if (controller.fly)
+            {
+                flying = controller.flightDuration;
+                flyingCoef = controller.bounceCoef;
+            }
 
             // Handle the landing impact on the object
             controller.ProcessPlayerLanding(_collider);
@@ -128,6 +136,18 @@ public class PlayerController : MonoBehaviour
         }
 
         // Move
+        if (flying > 0)
+        {
+            flying -= Time.deltaTime;
+            Vector2 flyvelocity = _rigidbody.velocity;
+
+            flyvelocity.y = jumpForce * flyingCoef * Mathf.Min(Mathf.Exp(1/flying), 1);
+
+            if (flying <= 0) flyvelocity.y = 0;
+            _rigidbody.velocity = flyvelocity;
+        }
+        if (flying < 0) flying = 0f;
+
         _constantVelocity = Vector2.Lerp(_constantVelocity, _input * speed, smoothInputSpeed);
 
         Vector2 velocity = _rigidbody.velocity;

@@ -7,6 +7,8 @@ public class ColliderController : MonoBehaviour
     [SerializeField] private enum LandingImpact { None, Break, Destroy, Extend }
 
     public bool bounce = true;
+    public bool fly = false;
+    public float flightDuration = 0f;
     public float bounceCoef = 1f;
     public bool killPlayer = false;
     [SerializeField] private LandingImpact onLanding = LandingImpact.None;
