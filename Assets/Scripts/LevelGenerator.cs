@@ -27,9 +27,8 @@ public class LevelGenerator : MonoBehaviour
 
     void Update()
     {
-        if (Camera.main.WorldToViewportPoint(spawnPosition).y < spawnYLimit) {
+        if (Camera.main.WorldToViewportPoint(spawnPosition).y < spawnYLimit)
             SpawnObstaclesPlatforms();
-        }
     }
 
     private void SpawnObstaclesPlatforms() {
