@@ -32,6 +32,7 @@ public class PlayerController : MonoBehaviour
 
     public TextMeshProUGUI scoreText;
     private float _distance = 0;
+    private int _score = 0;
 
     [SerializeField] private AudioClip[] _fireSounds;
     [SerializeField] private AudioSource _gameOverSound;
@@ -124,7 +125,8 @@ public class PlayerController : MonoBehaviour
         if (transform.position.y > _distance)
         {
             _distance = transform.position.y;
-            scoreText.text = (_distance * 50).ToString("F0");
+            _score = (int)(_distance * 50);
+            scoreText.text = _score.ToString();
         }
 
         // Move
@@ -143,6 +145,9 @@ public class PlayerController : MonoBehaviour
 
     public void GameOver()
     {
+        if (_score > PlayerPrefs.GetInt("HighScore", 0))
+            PlayerPrefs.SetInt("HighScore", _score);
+
         state = PlayerState.Dead;
         _collider.enabled = false;
         StartCoroutine(PlayGameOverSound());
