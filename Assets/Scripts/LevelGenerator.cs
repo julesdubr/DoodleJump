@@ -4,24 +4,23 @@ using UnityEngine;
 
 public class LevelGenerator : MonoBehaviour
 {
-    [SerializeField] private List<GameObject> platformsList = new List<GameObject>();
+    [SerializeField] private List<GameObject> platformsList;
     [SerializeField] private float[] platformsProbs = { 0.75f, 0.8f, 0.95f, 1f };
 
     [SerializeField] private float obstacleSpawnProb = 0.01f;
-    [SerializeField] private List<GameObject> obstaclesList = new List<GameObject>();
+    [SerializeField] private List<GameObject> obstaclesList;
     [SerializeField] private float[] obstaclesProbs = { 0.3f, 0.6f, 0.9f, 1f };
 
-    [SerializeField] private int _numberOfPlatforms = 200;
-    [SerializeField] private float _levelWidth = 2.5f;
-    [SerializeField] private float _minY = .5f;
-    [SerializeField] private float _maxY = 1.5f;
+    [SerializeField] private int numberOfPlatforms = 200;
+    [SerializeField] private float levelWidth = 2.5f;
+    [SerializeField] private float minY = .5f;
+    [SerializeField] private float maxY = 1.5f;
 
     private Vector3 spawnPosition = new Vector3(0f, -3f, 0f);
-    private float rand;
 
     void Start()
     {
-        for (int i = 0; i < _numberOfPlatforms; i++)
+        for (int i = 0; i < numberOfPlatforms; i++)
         {
             // Spawn obstacle
             if (Random.Range(0f, 1f) <=  obstacleSpawnProb)
@@ -37,9 +36,13 @@ public class LevelGenerator : MonoBehaviour
             GameObject platform = GetRandomPrefab(platformsList, platformsProbs);
 
             // Randomize position
-            RandomizeSpawn(_minY, _maxY);
+            RandomizeSpawn(minY, maxY);
             Instantiate(platform, spawnPosition, Quaternion.identity);
         }
+    }
+
+    void Update() {
+        Vector3 position = Camera.main.WorldToViewportPoint(spawnPosition);
     }
 
     private GameObject GetRandomPrefab(List<GameObject> prefabList, float[] probs)
@@ -58,7 +61,7 @@ public class LevelGenerator : MonoBehaviour
         // marche pas
         do
         {
-            spawnPosition.x = Random.Range(-_levelWidth, _levelWidth);
+            spawnPosition.x = Random.Range(-levelWidth, levelWidth);
         }
         while (Physics2D.OverlapBox(spawnPosition, new Vector2(1.2f, .3f), 0f) != null);
         spawnPosition.y += Random.Range(minY, maxY);

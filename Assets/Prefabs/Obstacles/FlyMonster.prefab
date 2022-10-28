@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: -4696948138155684696}
   m_Layer: 0
   m_Name: FlyMonster
-  m_TagString: Ennemy
+  m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

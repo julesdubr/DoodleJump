@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -1836234689749145418}
   m_Layer: 0
   m_Name: Blackhole
-  m_TagString: BlackHole
+  m_TagString: Blackhole
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

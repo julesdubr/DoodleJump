@@ -32,8 +32,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private AudioClip[] _fireSounds;
     [SerializeField] private AudioSource _gameOverSound;
 
-    public bool isDead = false;
-
+    public enum PlayerState { Normal, Flying, Dead };
+    public PlayerState state = PlayerState.Normal;
 
     void Awake()
     {
@@ -45,14 +45,14 @@ public class PlayerController : MonoBehaviour
 
     void OnMove(InputValue movementValue)
     {
-        if (isDead) return;
+        if (state == PlayerState.Dead) return;
 
         _input = movementValue.Get<Vector2>();
     }
 
     void OnFire()
     {
-        if (isDead) return;
+        if (state == PlayerState.Dead) return;
 
         AudioSystem.Instance.PlaySound(_fireSounds[Random.Range(0, _fireSounds.Length)]);
         _animator.SetTrigger("Fire");
@@ -107,7 +107,7 @@ public class PlayerController : MonoBehaviour
         transform.position = Camera.main.ViewportToWorldPoint(position);
 
         // Handling falling off the screen
-        if (!isDead && position.y < -0.1f)
+        if (state == PlayerState.Normal && position.y < -0.1f)
             GameOver();
 
         // Flip sprite depending on input
@@ -139,7 +139,7 @@ public class PlayerController : MonoBehaviour
 
     public void GameOver()
     {
-        isDead = true;
+        state = PlayerState.Dead;
         _collider.enabled = false;
         StartCoroutine(PlayGameOverSound());
     }

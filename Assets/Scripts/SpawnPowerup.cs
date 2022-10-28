@@ -6,7 +6,7 @@ public class SpawnPowerup : MonoBehaviour
 {
     [SerializeField] private float spawnProb = 0.05f;
     [SerializeField] private List<GameObject> powerUps;
-    [SerializeField] private float[] probabilities = { 1f };
+    [SerializeField] private float[] probabilities = { .5f, .8f, .1f };
 
 
     void Start()

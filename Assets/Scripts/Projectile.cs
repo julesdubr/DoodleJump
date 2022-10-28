@@ -25,7 +25,7 @@ public class Projectile : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Ennemy"))
+        if (collision.gameObject.CompareTag("Monster"))
         {
             AudioSystem.Instance.PlaySound(_monsterDeathSound);
             Destroy(collision.gameObject);

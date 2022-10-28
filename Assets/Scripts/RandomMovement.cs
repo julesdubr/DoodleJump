@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class VirusMovement : MonoBehaviour
+public class RandomMovement : MonoBehaviour
 {
     [SerializeField] private float speed = 7.5f;
     [SerializeField] private float intensity = .15f;

@@ -22,7 +22,7 @@ public class CameraFollow : MonoBehaviour
         if (target.position.y > transform.position.y)
             targetPosition = new Vector3(transform.position.x, target.position.y, transform.position.z);
 
-        else if (player.isDead)
+        else if (player.state == PlayerController.PlayerState.Dead)
             targetPosition = new Vector3(transform.position.x, target.position.y - 2, transform.position.z);
 
         else return;

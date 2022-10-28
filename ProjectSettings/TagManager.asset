@@ -5,10 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Platform
-  - Trap
-  - Ennemy
-  - BlackHole
-  - Spring
+  - Monster
+  - Blackhole
   layers:
   - Default
   - TransparentFX
