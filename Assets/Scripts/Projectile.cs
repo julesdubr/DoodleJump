@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-
     public float speed = 20f;
     private Rigidbody2D _rigidbody;
     [SerializeField] private AudioClip _monsterDeathSound;

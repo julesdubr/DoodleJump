@@ -169,8 +169,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10bf053561a9b5b4db4858398df1b089, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawnProb: 0.1
   powerUps:
   - {fileID: 5460107401614279722, guid: f8b4d06705521ea4a8427c547a6063af, type: 3}
   probabilities:
   - 1
-  spawnProb: 0.05

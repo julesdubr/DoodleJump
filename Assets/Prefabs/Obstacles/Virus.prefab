@@ -59,6 +59,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Virus
       objectReference: {fileID: 0}
+    - target: {fileID: 4463206504180626686, guid: 5d61bf5e295f01e4e86e90336f72b15c, type: 3}
+      propertyPath: m_Radius
+      value: 0.46
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8755558373157983108, guid: 5d61bf5e295f01e4e86e90336f72b15c, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 5d61bf5e295f01e4e86e90336f72b15c, type: 3}

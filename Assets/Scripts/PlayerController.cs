@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D _rigidbody;
     private Collider2D _collider;
     private Animator _animator;
+    private Renderer _renderer;
 
     private Vector2 _input;
     private Vector2 _constantVelocity;
@@ -39,6 +40,7 @@ public class PlayerController : MonoBehaviour
         _rigidbody = GetComponent<Rigidbody2D>();
         _animator = GetComponent<Animator>();
         _collider = GetComponent<Collider2D>();
+        _renderer = GetComponent<Renderer>();
     }
 
     void OnMove(InputValue movementValue)
@@ -145,7 +147,7 @@ public class PlayerController : MonoBehaviour
     IEnumerator PlayGameOverSound()
     {
         _gameOverSound.Play();
-        yield return new WaitWhile(() => _gameOverSound.isPlaying);
+        yield return new WaitWhile(() => _gameOverSound.isPlaying || _renderer.isVisible);
         SceneManager.LoadScene(0);
     }
 }
