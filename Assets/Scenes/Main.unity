@@ -551,7 +551,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1007510385
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -588,6 +588,7 @@ MonoBehaviour:
   levelWidth: 2.5
   minY: 0.5
   maxY: 1.5
+  spawnYLimit: 1.2
 --- !u!4 &1007510386
 Transform:
   m_ObjectHideFlags: 0
