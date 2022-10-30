@@ -4,13 +4,16 @@ using UnityEngine;
 
 public class ColliderController : MonoBehaviour
 {
+    [SerializeField] private enum PlayerAction { None, Bounce, Fly }
     [SerializeField] private enum LandingImpact { None, Break, Destroy, Extend }
 
-    public bool bounce = true;
-    public bool fly = false;
+    // public bool bounce = true;
+    // public bool fly = false;
+    [SerializeField] private PlayerAction playerAction = PlayerAction.Bounce;
     public float flightDuration = 0f;
-    public float bounceCoef = 1f;
+    public float coef = 1f;
     public bool killPlayer = false;
+
     [SerializeField] private LandingImpact onLanding = LandingImpact.None;
     [SerializeField] private AudioClip _hitSound;
 
@@ -51,5 +54,15 @@ public class ColliderController : MonoBehaviour
             default:
                 break;
         }
+    }
+
+    public bool Bounce()
+    {
+        return playerAction == PlayerAction.Bounce;
+    }
+
+    public bool Fly()
+    {
+        return playerAction == PlayerAction.Fly;
     }
 }

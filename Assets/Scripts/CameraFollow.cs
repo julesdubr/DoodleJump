@@ -19,7 +19,10 @@ public class CameraFollow : MonoBehaviour
 
     void LateUpdate()
     {
-        if (target.position.y > transform.position.y)
+        if (player.state == PlayerController.PlayerState.Flying)
+            targetPosition = new Vector3(transform.position.x, target.position.y + 2, transform.position.z);
+
+        else if (target.position.y > transform.position.y)
             targetPosition = new Vector3(transform.position.x, target.position.y, transform.position.z);
 
         else if (player.state == PlayerController.PlayerState.Dead)

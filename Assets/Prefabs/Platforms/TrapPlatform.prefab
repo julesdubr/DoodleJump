@@ -24,6 +24,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8300000, guid: b18f1784f17b703419ccd9a636f6598b, type: 3}
     - target: {fileID: 142538480784190496, guid: 94cde8ebe7695894087f1e8083917f00, type: 3}
+      propertyPath: playerAction
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 142538480784190496, guid: 94cde8ebe7695894087f1e8083917f00, type: 3}
       propertyPath: _trapBreakSound
       value: 
       objectReference: {fileID: 8300000, guid: b18f1784f17b703419ccd9a636f6598b, type: 3}

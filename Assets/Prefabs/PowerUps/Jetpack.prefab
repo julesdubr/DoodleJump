@@ -13,11 +13,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -5061026265784515946, guid: f8b4d06705521ea4a8427c547a6063af, type: 3}
       propertyPath: m_Size.y
-      value: 0.74
+      value: 0.35382175
       objectReference: {fileID: 0}
     - target: {fileID: -5061026265784515946, guid: f8b4d06705521ea4a8427c547a6063af, type: 3}
       propertyPath: m_Offset.y
-      value: 0
+      value: 0.17691088
       objectReference: {fileID: 0}
     - target: {fileID: -5061026265784515946, guid: f8b4d06705521ea4a8427c547a6063af, type: 3}
       propertyPath: m_IsTrigger
@@ -29,7 +29,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -5061026265784515946, guid: f8b4d06705521ea4a8427c547a6063af, type: 3}
       propertyPath: m_SpriteTilingProperty.pivot.y
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -5061026265784515946, guid: f8b4d06705521ea4a8427c547a6063af, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
@@ -43,6 +43,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 13a43d20928b8f84baa6660fb4c8502a, type: 3}
+    - target: {fileID: -1521273515854431205, guid: f8b4d06705521ea4a8427c547a6063af, type: 3}
+      propertyPath: m_SortingOrder
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 1736758998645354846, guid: f8b4d06705521ea4a8427c547a6063af, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -91,10 +95,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Jetpack
       objectReference: {fileID: 0}
+    - target: {fileID: 5460107401614279722, guid: f8b4d06705521ea4a8427c547a6063af, type: 3}
+      propertyPath: m_TagString
+      value: Jetpack
+      objectReference: {fileID: 0}
     - target: {fileID: 5546981740332100765, guid: f8b4d06705521ea4a8427c547a6063af, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5546981740332100765, guid: f8b4d06705521ea4a8427c547a6063af, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 1bbc0bf466b3bc148b137a70aff390aa, type: 2}
     - target: {fileID: 6635995399720323957, guid: f8b4d06705521ea4a8427c547a6063af, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -102,6 +114,10 @@ PrefabInstance:
     - target: {fileID: 9003415591203181488, guid: f8b4d06705521ea4a8427c547a6063af, type: 3}
       propertyPath: fly
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9003415591203181488, guid: f8b4d06705521ea4a8427c547a6063af, type: 3}
+      propertyPath: coef
+      value: 1.25
       objectReference: {fileID: 0}
     - target: {fileID: 9003415591203181488, guid: f8b4d06705521ea4a8427c547a6063af, type: 3}
       propertyPath: bounce
@@ -118,6 +134,10 @@ PrefabInstance:
     - target: {fileID: 9003415591203181488, guid: f8b4d06705521ea4a8427c547a6063af, type: 3}
       propertyPath: bounceCoef
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9003415591203181488, guid: f8b4d06705521ea4a8427c547a6063af, type: 3}
+      propertyPath: playerAction
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 9003415591203181488, guid: f8b4d06705521ea4a8427c547a6063af, type: 3}
       propertyPath: flightDuration

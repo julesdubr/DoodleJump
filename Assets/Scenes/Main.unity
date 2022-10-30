@@ -344,7 +344,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 532468115}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.39, y: 0.5, z: 0}
+  m_LocalPosition: {x: -0.39, y: 0.25, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 143471530}
@@ -602,8 +602,8 @@ MonoBehaviour:
   - {fileID: 1939756693985331159, guid: 9954440168034624099f8ee79bd7e64f, type: 3}
   platformsProbs:
   - 0.7
-  - 0.8
-  - 0.95
+  - 0.75
+  - 0.9
   - 1
   obstacleSpawnProb: 0.01
   obstaclesList:

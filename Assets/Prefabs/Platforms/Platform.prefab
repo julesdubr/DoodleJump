@@ -140,8 +140,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd8159adfd8d08245bf799c1734c4043, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bounce: 1
-  bounceCoef: 1
+  playerAction: 1
+  flightDuration: 0
+  coef: 1
   killPlayer: 0
   onLanding: 0
   _hitSound: {fileID: 8300000, guid: 2119d6c86fb34c543869c50b45ed11c5, type: 3}
@@ -169,12 +170,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10bf053561a9b5b4db4858398df1b089, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnProb: 0.1
+  spawnProb: 0.05
   powerUps:
   - {fileID: 5460107401614279722, guid: f8b4d06705521ea4a8427c547a6063af, type: 3}
   - {fileID: 4865520815696280180, guid: fccab7e7ded4dc5498e471d9d1fbda3a, type: 3}
   - {fileID: 5473020741145371992, guid: 56659c9f5fa50764f88e213dbb44f990, type: 3}
   probabilities:
-  - 0.3
   - 0.6
+  - 0.85
   - 1

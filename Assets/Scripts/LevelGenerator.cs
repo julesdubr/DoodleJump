@@ -15,7 +15,7 @@ public class LevelGenerator : MonoBehaviour
     [SerializeField] private float minY = .5f;
     [SerializeField] private float maxY = 1.5f;
 
-    private Vector3 spawnPosition = new Vector3(0f, -3f, 0f);
+    private Vector3 spawnPosition = new Vector3(0f, -3.5f, 0f);
     [SerializeField] private Transform spawnLimitPoint;
     private Collider2D hitCollider;
 
@@ -32,7 +32,7 @@ public class LevelGenerator : MonoBehaviour
     private void SpawnObstaclesPlatforms()
     {
         // Spawn obstacle
-        if (Random.Range(0f, 1f) <= obstacleSpawnProb)
+        if (spawnPosition.y > 10f && Random.Range(0f, 1f) <= obstacleSpawnProb)
         {
             GameObject obstacle = GetRandomPrefab(obstaclesList, obstaclesProbs);
 

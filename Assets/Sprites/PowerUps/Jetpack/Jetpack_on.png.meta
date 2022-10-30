@@ -1,7 +1,34 @@
 fileFormatVersion: 2
 guid: 32c3d43dbe6b51946bc8191488a1577c
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 4427585515690215712
+    second: Jetpack_on_0
+  - first:
+      213: 7866977626149375564
+    second: Jetpack_on_1
+  - first:
+      213: -5749518940271541445
+    second: Jetpack_on_2
+  - first:
+      213: 7574400855479972142
+    second: Jetpack_on_3
+  - first:
+      213: -3517232100591499591
+    second: Jetpack_on_4
+  - first:
+      213: -5115736564334307186
+    second: Jetpack_on_5
+  - first:
+      213: 3355593900201457030
+    second: Jetpack_on_6
+  - first:
+      213: 3861981587071622217
+    second: Jetpack_on_7
+  - first:
+      213: 8257800837813210825
+    second: Jetpack_on_8
   externalObjects: {}
   serializedVersion: 12
   mipmaps:
@@ -20,10 +47,12 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
+    flipGreenChannel: 0
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -41,7 +70,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -62,6 +91,7 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
+  swizzle: 50462976
   cookieLightType: 0
   platformSettings:
   - serializedVersion: 3
@@ -88,9 +118,210 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Jetpack_on_0
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 259
+        width: 54
+        height: 124
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 02941637191f17d30800000000000000
+      internalID: 4427585515690215712
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jetpack_on_1
+      rect:
+        serializedVersion: 2
+        x: 73
+        y: 259
+        width: 54
+        height: 124
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c4e449e487e1d2d60800000000000000
+      internalID: 7866977626149375564
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jetpack_on_2
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 259
+        width: 54
+        height: 124
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b330cbf6cfa9530b0800000000000000
+      internalID: -5749518940271541445
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jetpack_on_3
+      rect:
+        serializedVersion: 2
+        x: 195
+        y: 259
+        width: 54
+        height: 124
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e217c49727dad1960800000000000000
+      internalID: 7574400855479972142
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jetpack_on_4
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 131
+        width: 54
+        height: 124
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9b684a32a08403fc0800000000000000
+      internalID: -3517232100591499591
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jetpack_on_5
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 131
+        width: 54
+        height: 124
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e885066f2b04109b0800000000000000
+      internalID: -5115736564334307186
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jetpack_on_6
+      rect:
+        serializedVersion: 2
+        x: 136
+        y: 131
+        width: 54
+        height: 124
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 685b9ff9fd6719e20800000000000000
+      internalID: 3355593900201457030
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jetpack_on_7
+      rect:
+        serializedVersion: 2
+        x: 195
+        y: 131
+        width: 54
+        height: 124
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 94cd082bac3889530800000000000000
+      internalID: 3861981587071622217
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jetpack_on_8
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 3
+        width: 54
+        height: 124
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9ce87cb3c1a999270800000000000000
+      internalID: 8257800837813210825
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -101,9 +332,18 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      Jetpack_on_8: 8257800837813210825
+      Jetpack_on_4: -3517232100591499591
+      Jetpack_on_5: -5115736564334307186
+      Jetpack_on_2: -5749518940271541445
+      Jetpack_on_1: 7866977626149375564
+      Jetpack_on_6: 3355593900201457030
+      Jetpack_on_3: 7574400855479972142
+      Jetpack_on_7: 3861981587071622217
+      Jetpack_on_0: 4427585515690215712
   spritePackingTag: 
   pSDRemoveMatte: 0
-  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 

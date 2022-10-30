@@ -15,7 +15,7 @@ public class PlayerController : MonoBehaviour
     private Renderer _renderer;
 
     private Vector2 _input;
-    private float flying = 0f;
+    private float flightDuration = 0f;
     private float flyingCoef = 0f;
     private Vector2 _constantVelocity;
     [SerializeField] private float smoothInputSpeed = .1f;
@@ -43,6 +43,8 @@ public class PlayerController : MonoBehaviour
     public enum PlayerState { Normal, Flying, Dead };
     public PlayerState state = PlayerState.Normal;
 
+    private GameObject powerUp = null;
+
     void Awake()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
@@ -60,7 +62,7 @@ public class PlayerController : MonoBehaviour
 
     void OnFire()
     {
-        if (state == PlayerState.Dead) return;
+        if (state != PlayerState.Normal) return;
 
         AudioSystem.Instance.PlaySound(_fireSounds[Random.Range(0, _fireSounds.Length)]);
         _animator.SetTrigger("Fire");
@@ -79,28 +81,55 @@ public class PlayerController : MonoBehaviour
 
         if (fromAbove)
         {
-            if (controller.bounce)
+            // Handle the landing impact on the object
+            controller.ProcessPlayerLanding(_collider);
+
+            if (controller.Bounce())
             {
                 // Make the player bounce
                 Vector2 velocity = _rigidbody.velocity;
-                velocity.y = jumpForce * controller.bounceCoef;
+                velocity.y = jumpForce * controller.coef;
                 _rigidbody.velocity = velocity;
 
                 _animator.SetTrigger("Jump");
             }
-            if (controller.fly)
-            {
-                flying = controller.flightDuration;
-                flyingCoef = controller.bounceCoef;
-            }
 
-            // Handle the landing impact on the object
-            controller.ProcessPlayerLanding(_collider);
+            if (controller.Fly())
+            {
+                state = PlayerState.Flying;
+                flightDuration = controller.flightDuration;
+                flyingCoef = controller.coef;
+
+                powerUp = other.gameObject;
+
+                powerUp.GetComponent<Animator>().SetTrigger("On");
+
+                switch (powerUp.tag)
+                {
+                    case "Propeller":
+                        powerUp.transform.parent = propellerPoint;
+                        powerUp.GetComponent<Renderer>().sortingOrder = 1;
+                        break;
+                    case "Jetpack":
+                        powerUp.transform.parent = jetpackPoint;
+                        break;
+                    default:
+                        break;
+                }
+
+                powerUp.transform.localPosition = Vector3.zero;
+                return;
+            }
         }
 
         // Kill the player
         if (controller.killPlayer)
         {
+            if (state == PlayerState.Flying)
+            {
+                Destroy(other.gameObject);
+                return;
+            }
             GameObject stars = Instantiate(starsPrefab, starsPoint.position, starsPoint.rotation);
             stars.transform.parent = transform;
             GameOver();
@@ -137,19 +166,25 @@ public class PlayerController : MonoBehaviour
             scoreText.text = _score.ToString();
         }
 
-        // Move
-        if (flying > 0)
+        // Fly
+        if (flightDuration > 0)
         {
-            flying -= Time.deltaTime;
-            Vector2 flyvelocity = _rigidbody.velocity;
+            flightDuration -= Time.deltaTime;
+            Vector2 flyVelocity = _rigidbody.velocity;
 
-            flyvelocity.y = jumpForce * flyingCoef * Mathf.Min(Mathf.Exp(1/flying), 1);
+            flyVelocity.y = jumpForce * flyingCoef * Mathf.Min(Mathf.Exp(1 / flightDuration), 1);
 
-            if (flying <= 0) flyvelocity.y = 0;
-            _rigidbody.velocity = flyvelocity;
+            if (flightDuration <= 0) flyVelocity.y = jumpForce * 0.75f;
+
+            _rigidbody.velocity = flyVelocity;
         }
-        if (flying < 0) flying = 0f;
-
+        if (flightDuration < 0)
+        {
+            state = PlayerState.Normal;
+            flightDuration = 0f;
+            Destroy(powerUp);
+        }
+        // Move
         _constantVelocity = Vector2.Lerp(_constantVelocity, _input * speed, smoothInputSpeed);
 
         Vector2 velocity = _rigidbody.velocity;

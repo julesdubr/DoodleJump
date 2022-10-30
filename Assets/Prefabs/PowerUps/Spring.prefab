@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 6635995399720323957}
   - component: {fileID: 9003415591203181488}
   - component: {fileID: 5546981740332100765}
+  - component: {fileID: 1868030127581938246}
   m_Layer: 0
   m_Name: Spring
   m_TagString: Untagged
@@ -143,8 +144,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd8159adfd8d08245bf799c1734c4043, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bounce: 1
-  bounceCoef: 1.5
+  playerAction: 1
+  flightDuration: 0
+  coef: 1.5
   killPlayer: 0
   onLanding: 3
   _hitSound: {fileID: 8300000, guid: e1104e4f2b6aa884aacea9552cfcd035, type: 3}
@@ -167,3 +169,15 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1868030127581938246
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5460107401614279722}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f62fb7b320fe724bb1af2ac188565a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
